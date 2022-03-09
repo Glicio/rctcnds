@@ -1,6 +1,11 @@
+
+:root{
+    --main-text-color: rgb(218, 214, 182);
+  }
+
 .nav-bar{
     background-color: #555555;
-    color: white;
+    color: var(--main-text-color);
     font-weight: bold;
     padding-block: 0.2rem;
     padding-inline: 0.2rem ;
@@ -11,7 +16,7 @@
 }
 .buttons-div a{
     text-decoration: none;
-    color: white;
+    color: var(--main-text-color);
     margin-inline: 0.25rem;
     background-color: #666666;
     padding-inline: 0.25rem;

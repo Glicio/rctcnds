@@ -5,14 +5,13 @@ import React, { useState } from 'react'
 const PJ = (props) => {
     return(
         <>
-            <div className="links" id='pj' style={{display: props.display, opacity: props.opacity, transition: 'opacity 1s ease-out'}}>
+            <div className="links" id='pj' style={{display: props.display, opacity: props.opacity}}>
                 <h3 className="titulo3">Pessoa Jurídica</h3>
                 <a href="http://contribuinte.sefaz.al.gov.br/certidao/" className="btn" target='_blank' rel='noreferrer'>Estadual</a>
                 <a href="https://consulta-crf.caixa.gov.br/consultacrf/pages/consultaEmpregador.jsf" className="btn" target='_blank' rel='noreferrer'>FGTS</a>
                 <a href="https://cndt-certidao.tst.jus.br/inicio.faces" className="btn" target='_blank' rel='noreferrer'>Trabalhista</a>
                 <a href="https://semecmaceio.com/?opcao=certidoes" className="btn" target='_blank' rel='noreferrer'>Maceió</a>
                 <a href="https://arapiraca.abaco.com.br/eagata/portal/" className="btn" target='_blank' rel='noreferrer'>Arapiraca</a>
-                <a href="http://contribuinte.sefaz.al.gov.br/certidao/" className="btn" target='_blank' rel='noreferrer'>Estadual</a>
                 <div>
                     <h3 className='titulo3'>Receita Federal</h3>
                     <div className='sub-menu'>
@@ -31,7 +30,7 @@ const PJ = (props) => {
 const PF = (props) => {
     return(
         <>
-            <div className="links" id='pf' style={{display: props.display, opacity: props.opacity,  transition: 'opacity 1s ease-out'}}>
+            <div className="links" id='pf' style={{display: props.display, opacity: props.opacity}}>
                 <h3 className="titulo3">Pessoa Física</h3>
                 <a href="https://contribuinte.sefaz.al.gov.br/certidao/#/" className="btn" target='_blank' rel='noreferrer'>Estadual: Alagoas</a>
                 <a href="https://cndt-certidao.tst.jus.br/inicio.faces" className="btn" target='_blank' rel='noreferrer'>Trabalhista</a>
@@ -51,7 +50,6 @@ export default function Cnds(props){
 
 
     function handleClick(e){
-        console.log(e.target.id);
         if(e.target.id === 'pj-btn'){
             setPjstatus(!pjstatus)
         }

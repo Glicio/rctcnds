@@ -1,13 +1,19 @@
 
+:root{
+  --main-text-color: rgb(218, 214, 182);
+}
+
 .App {
   background-color: #282c34;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  padding: 2rem;
+  text-shadow: 2px 2px black;
+
   font-size: calc(10px + 2vmin);
-  color: white;
+  color: var(--main-text-color);
 }
 
 .container{
@@ -15,14 +21,14 @@
   padding: 5px;
   border: 1px solid black;
   border-radius: 0.25rem;
-  min-width: fit-content;
+  min-width: 30vw;
 }
 .sub-menu{
   display: flex;
 }
 .btn{
   text-decoration: none;
-  color: white;
+  color: var(--main-text-color);
   margin: 0.25rem;
   background-color: #666666;
   border: 1px solid black;
@@ -39,14 +45,20 @@
   border-bottom: 5px dotted black;
 }
 .titulo3{
-  font-size: small;
+  font-size: 24px;
   border-bottom: 1px solid black;
+  margin: 0;
+  padding: 0;
+  width: 100%;
 }
 .menus{
   display: flex;
+
 }
 
 .links{
+  margin-block: 2rem;
+  transition: 'opacity 5s ease-out';
   min-width: fit-content;
   padding: 0.25rem;
   background-color: #898d92;
