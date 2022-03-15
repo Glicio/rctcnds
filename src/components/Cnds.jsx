@@ -5,7 +5,7 @@ import React, { useState } from 'react'
 const PJ = (props) => {
     return(
         <>
-            <div className="links" id='pj' style={{display: props.display, opacity: props.opacity}}>
+            <div className="links" id='pj' style={{display: props.display}}>
                 <h3 className="titulo3">Pessoa Jurídica</h3>
                 <a href="http://contribuinte.sefaz.al.gov.br/certidao/" className="btn" target='_blank' rel='noreferrer'>Estadual</a>
                 <a href="https://consulta-crf.caixa.gov.br/consultacrf/pages/consultaEmpregador.jsf" className="btn" target='_blank' rel='noreferrer'>FGTS</a>
@@ -30,7 +30,7 @@ const PJ = (props) => {
 const PF = (props) => {
     return(
         <>
-            <div className="links" id='pf' style={{display: props.display, opacity: props.opacity}}>
+            <div className="links" id='pf' style={{display: props.display}}>
                 <h3 className="titulo3">Pessoa Física</h3>
                 <a href="https://contribuinte.sefaz.al.gov.br/certidao/#/" className="btn" target='_blank' rel='noreferrer'>Estadual: Alagoas</a>
                 <a href="https://cndt-certidao.tst.jus.br/inicio.faces" className="btn" target='_blank' rel='noreferrer'>Trabalhista</a>
@@ -67,8 +67,8 @@ export default function Cnds(props){
                 <button className='btn' onClick={(e) => handleClick(e)} id='pf-btn'>Pessoa Física</button>
                 <button className='btn' onClick={(e) => handleClick(e)} id='pj-btn'>Pessoa Jurídica</button>
             </div>
-            <PF display={pfstatus ? 'flex' : 'none'} opacity={pfstatus ? 1 : 0}/>
-            <PJ display={pjstatus ? 'flex' : 'none'} opacity={pjstatus ? 1 : 0}/> 
+            <PF display={pfstatus ? 'flex' : 'none'}/>
+            <PJ display={pjstatus ? 'flex' : 'none'}/> 
 
         </div>
     </>
