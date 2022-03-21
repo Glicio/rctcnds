@@ -1,7 +1,6 @@
 import React, { useState } from 'react'
 
 
-
 let data = [
     {tipo: "01", valor: 399.10},
     {tipo: "10", valor: 962.70},
@@ -11,16 +10,18 @@ let data = [
 
 
 
+
 export default function Folha(props){
     const [tableData, setTableData] = useState(data)
-    
-    function remover(index){    
+
+    function remover(index){
         let result = []
         for(let i = 0; i < tableData.length; i++){
             if(index !== i){
                 result.push(tableData[i])
             }
         }
+
         setTableData(result)
     }
 
