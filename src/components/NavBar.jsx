@@ -8,7 +8,7 @@ import {ReactComponent as Folha} from '../static/imgs/folha.svg'
 export default function NavBar(props){
     return(
         <div className='nav-bar'>
-            <span>Links úteis e classificação de folhas</span>
+            Links úteis e classificação de folhas
             <div className="btn-div">
                 <Link to='/' className='btn'><Certidao className='icon'/> Certidões</Link>
                 <Link to='/folha' className='btn'><Folha className='icon'/>Folha</Link>
