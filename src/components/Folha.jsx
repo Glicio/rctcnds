@@ -2,20 +2,11 @@ import React, { useState, useMemo, useEffect } from 'react'
 import { useTable } from 'react-table/dist/react-table.development'
 
 
-
-const data = [  
-    {
-        tipo: "01", valor: 399.10
-    },
-    {
-        tipo: "10", valor: 962.70
-    },
-    {
-        tipo: "01", valor: 1000.00
-    },
-    {
-        tipo: "33", valor: 777.18
-    },
+let data = [
+    {tipo: "01", valor: 399.10},
+    {tipo: "10", valor: 962.70},
+    {tipo: "01", valor: 1000.00},
+    {tipo: "33", valor: 777.18},
 ]
 
 const EditableCell = ({value: valorInicial, row: {index}, column: {id}, updateData}) => {
@@ -42,6 +33,7 @@ const EditableCell = ({value: valorInicial, row: {index}, column: {id}, updateDa
     
     return <input className='tabela-input' onBlur={onBlur} value={valor} onChange={onChange} type={getTipo()}/>;
 }
+
 
 
 export default function Folha(props){
