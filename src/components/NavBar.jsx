@@ -12,6 +12,7 @@ export default function NavBar(props){
             <div className="btn-div">
                 <Link to='/' className='btn'><Certidao className='icon'/> Certidões</Link>
                 <Link to='/folha' className='btn'><Folha className='icon'/>Folha</Link>
+                <Link to='/test' className='btn'><Folha className='icon'/>teste</Link>
             </div>
         </div>
     )
