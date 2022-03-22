@@ -16,36 +16,6 @@
   color: var(--main-text-color);
 }
 
-.tabela {
-  border-collapse: collapse;
-}
-.tabela > thead,
-th,
-td {
-  border: black solid 1px;
-  text-align: center;
-  justify-content: center;
-}
-.opt-td {
-  margin: 0;
-  vertical-align: top;
-}
-.opt-btn {
-  display: block;
-  margin: auto;
-  transform: translate(0, 25%);
-  background-color: transparent;
-  border: none;
-  color: white;
-  font-weight: bold;
-  cursor: pointer;
-}
-.tabela-input {
-  background-color: transparent;
-  color: var(--second-text-color);
-  border: none;
-}
-
 .icon {
   width: 16px;
   height: 16px;
@@ -119,22 +89,22 @@ td {
 .fade {
   animation: fade 0.2s ease-out;
 }
-.menu-enter{
+.menu-enter {
   opacity: 0;
   transform: scale(0.9);
 }
 
-.menu-enter-active{
+.menu-enter-active {
   opacity: 1;
   transform: translateX(0);
   transition: opacity 300ms, transform 300ms;
 }
 
-.menu-exit{
+.menu-exit {
   opacity: 1;
 }
 
-.menu-exit-active{
+.menu-exit-active {
   opacity: 0;
   transform: scale(0.9);
   transition: opacity 300ms, transform 300ms;
@@ -163,11 +133,11 @@ td {
 }
 
 @media (max-width: 600px) {
-  .sub-menu{
+  .sub-menu {
     flex-direction: column;
     align-items: center;
   }
-  .btn{
+  .btn {
     max-width: 90%;
   }
 }

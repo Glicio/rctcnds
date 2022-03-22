@@ -1,13 +1,7 @@
-import React, { useState, useMemo, useEffect } from 'react'
+import React, { useState, useMemo, useEffect, useRef } from 'react'
 import { useTable } from 'react-table/dist/react-table.development'
+import './folha.css'
 
-
-let data = [
-    {tipo: "01", valor: 399.10},
-    {tipo: "10", valor: 962.70},
-    {tipo: "01", valor: 1000.00},
-    {tipo: "33", valor: 777.18},
-]
 
 const EditableCell = ({value: valorInicial, row: {index}, column: {id}, updateData}) => {
     //console.log(`Criando célula na posição: Linha: ${index.index}, Coluna: ${id}`);
@@ -33,10 +27,9 @@ const EditableCell = ({value: valorInicial, row: {index}, column: {id}, updateDa
 }
 
 
-
 const ValoresForm = (props) => {
     
-
+    const valorInput = useRef(null)
     const [tipo,setTipo] = useState("")
     const [valor,setValor] = useState(0)
 
@@ -49,6 +42,7 @@ const ValoresForm = (props) => {
         )
         setTipo("")
         setValor(0)
+        valorInput.current.focus()
     }
 
     const onChange = (e) => {
@@ -62,14 +56,14 @@ const ValoresForm = (props) => {
     
     return(
         <>
-            <form onSubmit={(e) => {e.preventDefault()}}>
+            <form className='form' onSubmit={(e) => {e.preventDefault()}}>
                 <div className="form-item">
                     <label htmlFor="tipo">Tipo:</label>
-                    <input type="text" name='tipo' id='tipo' value={tipo} onChange={(e) => {onChange(e)}}/>
+                    <input className='form-input' ref={valorInput} type="text" name='tipo' id='tipo' value={tipo} onChange={(e) => {onChange(e)}}/>
                 </div>
                 <div className="form-item">
                     <label htmlFor="valor">Valor:</label>
-                    <input type="number" name='valor' id='valor' value={valor} onChange={(e) => {onChange(e)}}/>
+                    <input className='form-input' type="number" name='valor' id='valor' value={valor} onChange={(e) => {onChange(e)}}/>
                 </div>
                 <button className='btn' onClick={(e) => onClick(e)}>Adicionar</button>
             </form>
@@ -78,9 +72,9 @@ const ValoresForm = (props) => {
 }
 
 
-
-export default function Folha(props){
-
+const InputTable = (props) => {
+    const updateData = props.updateData
+    const remover = props.remover
     const columns = useMemo(() => [
         {
             Header: 'Tipo',
@@ -92,7 +86,11 @@ export default function Folha(props){
         },
     ],[])
 
-    const [tableData, setTableData] = useState(data)
+    const [tableData, setTableData] = useState(props.data)
+
+    useEffect(() => {
+        setTableData(old => props.data)
+    }, [props.data])
     const tableInstance = useTable({columns, data: tableData, defaultColumn: {Cell: EditableCell}, updateData})
     const {
         headers,
@@ -102,46 +100,9 @@ export default function Folha(props){
         prepareRow,
       } = tableInstance
     
-    function remover(index){    
-
-        const result = tableData.filter((item, i) => {
-            return index !== i
-        })
-
-        setTableData(result)
-    }
-
-    function updateData(valor, rowIndex, columnId){
-        setTableData(old => old.map((row, index) => {
-            if(index === rowIndex){
-                return {...old[rowIndex],[columnId]: parseFloat(valor)}
-            }
-            return row
-        })
-
-        )
-    }
-
-    function addData({tipo, valor}){
-        // Adiciona um valor à tabela 
-        setTableData(old => {
-            return [...old, {tipo: tipo, valor: valor}]
-        })
-    }    
-
-    function getFolhaInfo(){
-        let total = {}
-        tableData.forEach((item) => {
-            !total[item.tipo] ? total[item.tipo] = item.valor : total[item.tipo] = total[item.tipo]+item.valor
-        })
-        console.log(total)
-    }
-
     return (
-    <>
-        <h1>Folha</h1>
-        <ValoresForm addData={addData}></ValoresForm>
-        <table className='tabela'{...getTableProps()}>
+        <>
+            <table className='tabela'{...getTableProps()}>
             <thead>
                 <tr>
                 {headers.map((column => {
@@ -166,5 +127,61 @@ export default function Folha(props){
                 })}
             </tbody>
         </table>
+        </>
+    )
+}
+
+
+export default function Folha(){
+
+    const [data, setData] = useState([])
+    function remover(index){    
+
+        const result = data.filter((item, i) => {
+            return index !== i
+        })
+
+        setData(result)
+    }
+
+    function updateData(valor, rowIndex, columnId){
+        setData(old => old.map((row, index) => {
+            if(index === rowIndex){
+                return {...old[rowIndex],[columnId]: parseFloat(valor)}
+            }
+            return row
+        })
+
+        )
+    }
+
+    function addData({tipo, valor}){
+        // Adiciona um valor à tabela 
+        setData(old => {
+            return [...old, {tipo: tipo, valor: valor}]
+        })
+    }    
+
+    function getFolhaInfo(){
+        let total = {}
+        data.forEach((item) => {
+            !total[item.tipo] ? total[item.tipo] = item.valor : total[item.tipo] = total[item.tipo]+item.valor
+        })
+        console.log(total)
+    }
+
+
+    return (
+    <>
+
+        <div className="container-grid">
+            <div className="input-div">
+                <ValoresForm addData={addData} ></ValoresForm>
+                <InputTable
+                data={data}
+                remover={remover}
+                updateData={updateData}/>
+            </div>
+        </div>
     </>)
 }
