@@ -29,9 +29,52 @@ const EditableCell = ({value: valorInicial, row: {index}, column: {id}, updateDa
     const getTipo = () => {
         return id === 'valor' ? 'number' : 'text'
     }
-
-    
     return <input className='tabela-input' onBlur={onBlur} value={valor} onChange={onChange} type={getTipo()}/>;
+}
+
+
+
+const ValoresForm = (props) => {
+    
+
+    const [tipo,setTipo] = useState("")
+    const [valor,setValor] = useState(0)
+
+    const onClick = () =>{
+        props.addData(
+            {
+                tipo: tipo,
+                valor: valor,
+            }
+        )
+        setTipo("")
+        setValor(0)
+    }
+
+    const onChange = (e) => {
+        if(e.target.name === 'tipo'){
+            setTipo(e.target.value)
+        }
+        if(e.target.name === 'valor'){
+            setValor(e.target.value)
+        }
+    }
+    
+    return(
+        <>
+            <form onSubmit={(e) => {e.preventDefault()}}>
+                <div className="form-item">
+                    <label htmlFor="tipo">Tipo:</label>
+                    <input type="text" name='tipo' id='tipo' value={tipo} onChange={(e) => {onChange(e)}}/>
+                </div>
+                <div className="form-item">
+                    <label htmlFor="valor">Valor:</label>
+                    <input type="number" name='valor' id='valor' value={valor} onChange={(e) => {onChange(e)}}/>
+                </div>
+                <button className='btn' onClick={(e) => onClick(e)}>Adicionar</button>
+            </form>
+        </>
+    )
 }
 
 
@@ -79,25 +122,14 @@ export default function Folha(props){
         )
     }
 
-    function pushTestData(){
-        // const result = tableData
-        // result.push({tipo: '44',valor: Math.floor(Math.random()*100)})
-        // console.log(result);
+    function addData({tipo, valor}){
+        // Adiciona um valor à tabela 
         setTableData(old => {
-            return [...old, {tipo: '44',valor: Math.floor(Math.random()*100)}]
+            return [...old, {tipo: tipo, valor: valor}]
         })
-    }
+    }    
 
-    function reduceValor(){
-        const total = tableData.reduce((total,item) => {
-            console.log(item);
-            return total + item.valor
-        }, 0)
-        alert(total)
-    }
-    
-
-    function totalReducer(){
+    function getFolhaInfo(){
         let total = {}
         tableData.forEach((item) => {
             !total[item.tipo] ? total[item.tipo] = item.valor : total[item.tipo] = total[item.tipo]+item.valor
@@ -108,8 +140,7 @@ export default function Folha(props){
     return (
     <>
         <h1>Folha</h1>
-        <button onClick={pushTestData}>Adicionar</button>
-        <button onClick={totalReducer}>Contar</button>
+        <ValoresForm addData={addData}></ValoresForm>
         <table className='tabela'{...getTableProps()}>
             <thead>
                 <tr>
