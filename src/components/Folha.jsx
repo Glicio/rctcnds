@@ -3,6 +3,9 @@ import { useTable } from 'react-table/dist/react-table.development'
 import './folha.css'
 
 
+const TIPOS_VALIDOS = ['01','10','33','37','42','43','44','99']
+
+
 const EditableCell = ({value: valorInicial, row: {index}, column: {id}, updateData}) => {
     //console.log(`Criando célula na posição: Linha: ${index.index}, Coluna: ${id}`);
     //console.log(id)
@@ -26,14 +29,19 @@ const EditableCell = ({value: valorInicial, row: {index}, column: {id}, updateDa
     return <input className='tabela-input' onBlur={onBlur} value={valor} onChange={onChange} type={getTipo()}/>;
 }
 
+const validarTipos = (tipo) => {
+    return TIPOS_VALIDOS.includes(tipo)
+}
 
 const ValoresForm = (props) => {
     
+    const tipoInput = useRef(null)
     const valorInput = useRef(null)
     const [tipo,setTipo] = useState("")
-    const [valor,setValor] = useState(0)
+    const [valor,setValor] = useState("")
 
     const onClick = () =>{
+        
         props.addData(
             {
                 tipo: tipo,
@@ -41,13 +49,22 @@ const ValoresForm = (props) => {
             }
         )
         setTipo("")
-        setValor(0)
-        valorInput.current.focus()
+        setValor("")
+        tipoInput.current.focus()
     }
 
     const onChange = (e) => {
         if(e.target.name === 'tipo'){
-            setTipo(e.target.value)
+            if(e.target.value.length < 2){
+                setTipo(e.target.value)
+            }
+            if(e.target.value.length >= 2 && !validarTipos(e.target.value)){
+                alert("valor inválido")
+                setTipo("")
+            }else if(e.target.value.length >= 2 && validarTipos(e.target.value)){
+                setTipo(e.target.value) 
+                valorInput.current.focus()
+            } 
         }
         if(e.target.name === 'valor'){
             setValor(e.target.value)
@@ -59,11 +76,11 @@ const ValoresForm = (props) => {
             <form className='form' onSubmit={(e) => {e.preventDefault()}}>
                 <div className="form-item">
                     <label htmlFor="tipo">Tipo:</label>
-                    <input className='form-input' ref={valorInput} type="text" name='tipo' id='tipo' value={tipo} onChange={(e) => {onChange(e)}}/>
+                    <input className='form-input' ref={tipoInput} autoComplete='off' type="text" name='tipo' id='tipo' value={tipo} onChange={(e) => {onChange(e)}}/>
                 </div>
                 <div className="form-item">
                     <label htmlFor="valor">Valor:</label>
-                    <input className='form-input' type="number" name='valor' id='valor' value={valor} onChange={(e) => {onChange(e)}}/>
+                    <input className='form-input' ref={valorInput} autoComplete='off' type="number" name='valor' id='valor' value={valor} onChange={(e) => {onChange(e)}}/>
                 </div>
                 <button className='btn' onClick={(e) => onClick(e)}>Adicionar</button>
             </form>
@@ -73,6 +90,7 @@ const ValoresForm = (props) => {
 
 
 const InputTable = (props) => {
+    
     const updateData = props.updateData
     const remover = props.remover
     const columns = useMemo(() => [
