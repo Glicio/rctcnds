@@ -1,0 +1,10 @@
+.estadual-div{
+    display: flex;
+    align-items: center;
+    width: 100%;
+}
+.estadual-div select{
+    background-color: #373737;
+    color: white;
+    height: 2rem;
+}

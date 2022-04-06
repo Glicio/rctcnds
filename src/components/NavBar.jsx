@@ -11,6 +11,7 @@ export default function NavBar(props){
             Links úteis e classificação de folhas
             <div className="btn-div">
                 <Link to='/' className='btn'><Certidao className='icon'/> Certidões</Link>
+                <Link to='/teste' className='btn'><Certidao className='icon'/> teste</Link>
                 <Link to='/folha' className='btn'><Folha className='icon'/>Folha</Link>
             </div>
         </div>

@@ -8,6 +8,7 @@ import estadual from '../static/imgs/brasao_alagoas-463630d216.png'
 import maceio from '../static/imgs/maceio.png'
 import tst from '../static/imgs/tst.png'
 import receita from '../static/imgs/receita_federal.png'
+import Estadual from './Estadual'
 
 const NavLink = (props) => {
     //Link: url do link
@@ -29,7 +30,7 @@ const PJ = (props) => {
         <>
             <div className="links" id='pj' style={{display: props.display}}>
                 <h3 className="titulo3">Pessoa Jurídica</h3>
-                <NavLink link="http://contribuinte.sefaz.al.gov.br/certidao/" imgsrc={estadual} nome="Estadual: Alagoas"/>
+                <Estadual />
                 <NavLink link="https://consulta-crf.caixa.gov.br/consultacrf/pages/consultaEmpregador.jsf" imgsrc={null} nome="FGTS"><Caixa className='logo'/></NavLink>
                 <NavLink link="https://cndt-certidao.tst.jus.br/inicio.faces" imgsrc={tst} nome="Trabalhista"/>
                 <NavLink link="https://semecmaceio.com/?opcao=certidoes" imgsrc={maceio} nome="Maceió"/>
@@ -58,7 +59,7 @@ const PF = (props) => {
         <>
             <div className="links" id='pf' style={{display: props.display}}>
                 <h3 className="titulo3">Pessoa Física</h3>
-                <NavLink link="http://contribuinte.sefaz.al.gov.br/certidao/" imgsrc={estadual} nome="Estadual: Alagoas"/>
+                <Estadual />
                 <NavLink link="https://cndt-certidao.tst.jus.br/inicio.faces" imgsrc={tst} nome="Trabalhista"/>
                 <NavLink link="https://solucoes.receita.fazenda.gov.br/Servicos/certidaointernet/PF/Emitir" imgsrc={receita} nome="Emitir nova certidão"></NavLink>
             </div>

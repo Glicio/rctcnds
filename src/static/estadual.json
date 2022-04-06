@@ -1,0 +1,166 @@
+{
+    "itens":[
+        {
+            "estado":"AL",
+            "link":"https://contribuinte.sefaz.al.gov.br/certidao/#/",
+            "name":"Estadual: AL",
+            "img_url": "https://contribuinte.sefaz.al.gov.br/content/images/brasao_alagoas-463630d216.png"
+        },
+        {
+            "estado":"AC",
+            "link":"http://www.sefaznet.ac.gov.br/sefazonline/servlet/wemcnd",
+            "name":"Estadual: AC",
+            "img_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/52/Bras%C3%A3o_do_Acre.svg/1200px-Bras%C3%A3o_do_Acre.svg.png"
+        },
+        {
+            "estado":"AP",
+            "link":"http://www.sefaz.ap.gov.br/sate/seg/SEGf_AcessarFuncao.jsp?cdFuncao=DIA_060",
+            "name":"Estadual: AP",
+            "img_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/63/Bras%C3%A3o_do_Amap%C3%A1.svg/200px-Bras%C3%A3o_do_Amap%C3%A1.svg.png"
+        },
+        {
+            "estado":"AM",
+            "link":"http://www.sefaz.am.gov.br/certidoes.asp",
+            "name":"Estadual: AM",
+            "img_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2c/Bras%C3%A3o_do_Amazonas.svg/1200px-Bras%C3%A3o_do_Amazonas.svg.png"
+        },
+        {
+            "estado":"BA",
+            "link":"https://servicos.sefaz.ba.gov.br/sistemas/DSCRE/Modulos/Publico/EmissaoCertidao.aspx",
+            "name":"Estadual: BA",
+            "img_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/12/Bras%C3%A3o_do_estado_da_Bahia.svg/1200px-Bras%C3%A3o_do_estado_da_Bahia.svg.png"
+        },
+        {
+            "estado":"CE",
+            "link":"https://www.pge.ce.gov.br/certidao-negativa-e-de-regularidade/",
+            "name":"Estadual: CE",
+            "img_url": "https://www.pge.ce.gov.br/wp-content/themes/ceara2017/favicon.ico"
+        },
+        {
+            "estado":"DF",
+            "link":"https://ww1.receita.fazenda.df.gov.br/cidadao/certidoes/Certidao",
+            "name":"Estadual: DF",
+            "img_url": "https://www.df.gov.br/wp-conteudo/uploads/2015/10/Bras%C3%A3o_do_Distrito_Federal_Brasil.png"
+        },
+        {
+            "estado":"ES",
+            "link":"https://internet.sefaz.es.gov.br/agenciavirtual/area_publica/cnd/emissao.php",
+            "name":"Estadual: ES",
+            "img_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a0/Bras%C3%A3o_do_Esp%C3%ADrito_Santo.svg/200px-Bras%C3%A3o_do_Esp%C3%ADrito_Santo.svg.png"
+        },
+        {
+            "estado":"GO",
+            "link":"https://www.economia.go.gov.br/index.php?option=com_content&view=article&id=4663&catid=39",
+            "name":"Estadual: GO",
+            "img_url": "https://upload.wikimedia.org/wikipedia/commons/b/bf/Bras%C3%A3o_de_Goi%C3%A1s.svg"
+        },
+        {
+            "estado":"MA",
+            "link":"http://sistemas.sefaz.ma.gov.br/certidoes/jsp/emissaoCertidaoNegativa/emissaoCertidaoNegativa.jsf",
+            "name":"Estadual: MA",
+            "img_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ab/Bras%C3%A3o_do_Maranh%C3%A3o.svg/1200px-Bras%C3%A3o_do_Maranh%C3%A3o.svg.png"
+        },
+        {
+            "estado":"MT",
+            "link":"http://www5.sefaz.mt.gov.br/-/6347016-emissao",
+            "name":"Estadual: MT",
+            "img_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/04/Bras%C3%A3o_de_Mato_Grosso.png/1200px-Bras%C3%A3o_de_Mato_Grosso.png"
+        },
+        {
+            "estado":"MS",
+            "link":"https://www.sefaz.ms.gov.br/servicos/certidao-negativa/",
+            "name":"Estadual: MS",
+            "img_url": "https://upload.wikimedia.org/wikipedia/commons/f/fa/Bras%C3%A3o_de_Mato_Grosso_do_Sul.svg"
+        },
+        {
+            "estado":"MG",
+            "link":"https://www2.fazenda.mg.gov.br/sol/ctrl/SOL/CDT/SERVICO_829?ACAO=INICIAR",
+            "name":"Estadual: MG",
+            "img_url": "https://upload.wikimedia.org/wikipedia/commons/d/d2/Bras%C3%A3o_de_Minas_Gerais.svg"
+        },
+        {
+            "estado":"PA",
+            "link":"https://app.sefa.pa.gov.br/emissao-certidao/template.action",
+            "name":"Estadual: PA",
+            "img_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/bc/Bras%C3%A3o_do_Par%C3%A1.svg/1200px-Bras%C3%A3o_do_Par%C3%A1.svg.png"
+        },
+        {
+            "estado":"PB",
+            "link":"https://www.sefaz.pb.gov.br/servirtual/certidoes/emissao-de-certidao-de-debitos-cidadao",
+            "name":"Estadual: PB",
+            "img_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fd/Bras%C3%A3o_da_Para%C3%ADba.svg/1200px-Bras%C3%A3o_da_Para%C3%ADba.svg.png"
+        },
+        {
+            "estado":"PR",
+            "link":"http://www.cdw.fazenda.pr.gov.br/cdw/emissao/certidaoAutomatica",
+            "name":"Estadual: PR",
+            "img_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/49/Bras%C3%A3o_do_Paran%C3%A1.svg/1200px-Bras%C3%A3o_do_Paran%C3%A1.svg.png"
+        },
+        {
+            "estado":"PE",
+            "link":"https://efisco.sefaz.pe.gov.br/sfi_trb_gpf/PREmitirCertidaoNegativaNarrativaDebitoFiscal",
+            "name":"Estadual: PE",
+            "img_url": "https://upload.wikimedia.org/wikipedia/commons/0/04/Bras%C3%A3o_do_estado_de_Pernambuco.svg"
+        },
+        {
+            "estado":"PI",
+            "link":"https://webas.sefaz.pi.gov.br/certidaonft-web/index.xhtml",
+            "name":"Estadual: PI",
+            "img_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ad/Bras%C3%A3o_do_Piau%C3%AD.svg/1200px-Bras%C3%A3o_do_Piau%C3%AD.svg.png"
+        },
+        {
+            "estado":"RJ",
+            "link":"http://www4.fazenda.rj.gov.br/certidao-fiscal-web/emitirCertidao.jsf",
+            "name":"Estadual: RJ",
+            "img_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/29/Bras%C3%A3o_da_cidade_do_Rio_de_Janeiro.svg/1200px-Bras%C3%A3o_da_cidade_do_Rio_de_Janeiro.svg.png"
+        },
+        {
+            "estado":"RN",
+            "link":"https://uvt.set.rn.gov.br/#/services/certidao-negativa/emitir",
+            "name":"Estadual: RN",
+            "img_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/26/Bras%C3%A3o_do_Rio_Grande_do_Norte.svg/1200px-Bras%C3%A3o_do_Rio_Grande_do_Norte.svg.png"
+        },
+        {
+            "estado":"RS",
+            "link":"https://www.sefaz.rs.gov.br/sat/CertidaoSitFiscalSolic.aspx",
+            "name":"Estadual: RS",
+            "img_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/38/Bras%C3%A3o_do_Rio_Grande_do_Sul.svg/1200px-Bras%C3%A3o_do_Rio_Grande_do_Sul.svg.png"
+        },
+        {
+            "estado":"RO",
+            "link":"https://portalcontribuinte.sefin.ro.gov.br/Publico/certidaoNegativa.jsp",
+            "name":"Estadual: RO",
+            "img_url": "https://upload.wikimedia.org/wikipedia/commons/f/f1/Bras%C3%A3o_de_Rond%C3%B4nia.svg"
+        },
+        {
+            "estado":"RR",
+            "link":"https://www.sefaz.rr.gov.br/empresa/certidao-negativa-de-debitos",
+            "name":"Estadual: RR",
+            "img_url": "https://upload.wikimedia.org/wikipedia/commons/e/ed/Bras%C3%A3o_de_Roraima.svg"
+        },
+        {
+            "estado":"SC",
+            "link":"https://sat.sef.sc.gov.br/tax.NET/Sat.CtaCte.Web/SolicitacaoCnd.aspx",
+            "name":"Estadual: SC",
+            "img_url": "https://upload.wikimedia.org/wikipedia/commons/6/65/Bras%C3%A3o_de_Santa_Catarina.svg"
+        },
+        {
+            "estado":"SP",
+            "link":"https://www10.fazenda.sp.gov.br/CertidaoNegativaDeb/Pages/EmissaoCertidaoNegativa.aspx",
+            "name":"Estadual: SP",
+            "img_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1a/Bras%C3%A3o_do_estado_de_S%C3%A3o_Paulo.svg/1200px-Bras%C3%A3o_do_estado_de_S%C3%A3o_Paulo.svg.png"
+        },
+        {
+            "estado":"SE",
+            "link":"https://www.sefaz.se.gov.br/SitePages/servico.aspx?cod=1&Url=https%3a//security.sefaz.se.gov.br/internet/publico/cleanProcess.jsp&AppName=SIC&TransId=T24070&CancelUrl=paginaInicial.jsp",
+            "name":"Estadual: SE",
+            "img_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/52/Bras%C3%A3o_de_Sergipe.svg/1200px-Bras%C3%A3o_de_Sergipe.svg.png"
+        },
+        {
+            "estado":"TO",
+            "link":"https://www.to.gov.br/sefaz/cnd-certidao-negativa-de-debitos/7h3xx8lr88vg",
+            "name":"Estadual: TO",
+            "img_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/cc/Bras%C3%A3o_do_Tocantins.svg/1200px-Bras%C3%A3o_do_Tocantins.svg.png"
+        }
+    ]
+}
