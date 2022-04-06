@@ -4,7 +4,6 @@ import {ReactComponent as Caixa} from '../static/imgs/caixa.svg'
 import {ReactComponent as Arapiraca} from '../static/imgs/arapiraca.svg'
 import { CSSTransition } from 'react-transition-group'
 
-import estadual from '../static/imgs/brasao_alagoas-463630d216.png'
 import maceio from '../static/imgs/maceio.png'
 import tst from '../static/imgs/tst.png'
 import receita from '../static/imgs/receita_federal.png'

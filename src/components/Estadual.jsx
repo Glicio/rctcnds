@@ -28,7 +28,7 @@ export default function Estadual(){
     return (
     <div className="estadual-div">
         
-        <DropDown></DropDown>
+        <DropDown/>
 
         {data.itens.map(cnd => {
             if(estado === cnd.estado){
