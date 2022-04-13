@@ -1,39 +1,49 @@
-.tabela {
-  border-collapse: collapse;
-  width: 100%;
-}
-.tabela > thead,
-th,
-td {
-  border: black solid 1px;
-  text-align: center;
-  justify-content: center;
-}
-.opt-td {
-  margin: 0;
-  vertical-align: top;
-}
-.opt-btn {
-  display: block;
-  margin: auto;
-  transform: translate(0, 25%);
-  background-color: transparent;
-  border: none;
-  color: white;
-  font-weight: bold;
-  cursor: pointer;
-}
-.tabela-input {
-  background-color: transparent;
-  color: var(--second-text-color);
-  border: none;
-  text-align: center;
-  width: 8rem;
+*{
+  --form-width: 30vw;
+  --input-width: 8vw;
+  --margin01: 0.25vw;
+  box-sizing: border-box;
 }
 
-.input-div {
-  background-color: #373737;
-  padding: 0.5rem;
+
+.input-form{
+  padding: var(--margin01);
+  width: var(--form-width);
+  background-color: black;
+  border: gray 1px solid;
+}
+.input-form input, button{
+  margin: var(--margin01);
+}
+
+
+.inputs-table{
+  width: var(--form-width);
+  max-width: var(--form-width);
+  border-collapse: collapse;
+  text-align: center;
+}
+.inputs-table tr,td,th {
+  border: gray   1px solid;
+}
+.inputs-table th {
+  color: white;
+  background-color: black;
+  border-color: gray;
+}
+.inputs-table button {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  color: white;
+}
+.inputs-table input{
+  width: var(--input-width);
+  border: none;
+  background-color: transparent;
+  color: white;
+  text-align: center;
+  margin-bottom: auto;
 }
 
 .form {
@@ -51,9 +61,4 @@ td {
 .form-item {
   display: flex;
   flex-direction: column;
-}
-.container-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  grid-template-rows: auto auto;
 }

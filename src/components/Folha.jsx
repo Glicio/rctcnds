@@ -5,201 +5,191 @@ import './folha.css'
 
 const TIPOS_VALIDOS = ['01','10','33','37','42','43','44','99']
 
-
-const EditableCell = ({value: valorInicial, row: {index}, column: {id}, updateData}) => {
-    //console.log(`Criando célula na posição: Linha: ${index.index}, Coluna: ${id}`);
-    //console.log(id)
-    const [valor, setValor] = useState(valorInicial)
-
-    useEffect(() => {
-        setValor(valorInicial)
-    }, [valorInicial])
-    
-    const onChange = (e) => {
-        setValor(e.target.value)
+const isValidTipo = (tipo) =>{
+    if(TIPOS_VALIDOS.includes(tipo)){
+        return true;
     }
-    
-    const onBlur = () =>{
-        updateData(valor, index, id)
-    }
-
-    const getTipo = () => {
-        return id === 'valor' ? 'number' : 'text'
-    }
-    return <input className='tabela-input' onBlur={onBlur} value={valor} onChange={onChange} type={getTipo()}/>;
+    return false;
 }
 
-const validarTipos = (tipo) => {
-    return TIPOS_VALIDOS.includes(tipo)
-}
+const InputForm = ({ addEntrada, removeEntrada}) =>{
 
-const ValoresForm = (props) => {
-    
-    const tipoInput = useRef(null)
-    const valorInput = useRef(null)
-    const [tipo,setTipo] = useState("")
-    const [valor,setValor] = useState("")
+    const [tipo, setTipo] = useState("");
+    const [valor, setValor] = useState("");
 
-    const onClick = () =>{
-        
-        props.addData(
-            {
-                tipo: tipo,
-                valor: valor,
-            }
-        )
-        setTipo("")
-        setValor("")
-        tipoInput.current.focus()
-    }
+    const valorInput = useRef(null);
+    const tipoInput = useRef(null);
 
-    const onChange = (e) => {
-        if(e.target.name === 'tipo'){
-            if(e.target.value.length < 2){
-                setTipo(e.target.value)
-            }
-            if(e.target.value.length >= 2 && !validarTipos(e.target.value)){
-                alert("valor inválido")
-                setTipo("")
-            }else if(e.target.value.length >= 2 && validarTipos(e.target.value)){
-                setTipo(e.target.value) 
-                valorInput.current.focus()
-            } 
+
+
+    const handleTipoInput = (e) => {
+        if(e.target.value.length >= 2 && !isValidTipo(e.target.value)){
+            setTipo("");
+            alert("Tipo inválido!")
+        }else{
+            setTipo(old => e.target.value);
         }
-        if(e.target.name === 'valor'){
-            setValor(e.target.value)
+
+        if (e.target.value.length >= 2 && isValidTipo(e.target.value)){
+            valorInput.current.focus();
         }
     }
-    
+
+    const handleValueInput = (e) => {
+        setValor(old => e.target.value)
+    }
     return(
-        <>
-            <form className='form' onSubmit={(e) => {e.preventDefault()}}>
-                <div className="form-item">
-                    <label htmlFor="tipo">Tipo:</label>
-                    <input className='form-input' ref={tipoInput} autoComplete='off' type="text" name='tipo' id='tipo' value={tipo} onChange={(e) => {onChange(e)}}/>
-                </div>
-                <div className="form-item">
-                    <label htmlFor="valor">Valor:</label>
-                    <input className='form-input' ref={valorInput} autoComplete='off' type="number" name='valor' id='valor' value={valor} onChange={(e) => {onChange(e)}}/>
-                </div>
-                <button className='btn' onClick={(e) => onClick(e)}>Adicionar</button>
-            </form>
-        </>
+        <form className='input-form' onSubmit={(e) => {e.preventDefault()}}>
+            <div className="form-item">
+                <label htmlFor="tipo">Tipo:</label>
+                <input ref={tipoInput} type="text" name="tipo" id="tipo" value={tipo} onChange={(e) => {handleTipoInput(e)}}/>
+            </div>
+            <div className="form-item">
+                <label htmlFor="tipo">Valor:</label>
+                <input ref={valorInput} type="number" name="valor" id="valor" value={valor} onChange={(e) => {handleValueInput(e)}}/>
+            </div>
+            <button onClick={(e) => {
+                addEntrada({tipo: tipo, valor: valor});
+                setValor("");
+                setTipo("");
+                tipoInput.current.focus();
+            }}>Adicionar</button>
+        </form>
     )
 }
 
+const InputsTable = ({entradas, removeEntrada, updateEntrada}) => {
 
-const InputTable = (props) => {
-    
-    const updateData = props.updateData
-    const remover = props.remover
-    const columns = useMemo(() => [
-        {
-            Header: 'Tipo',
-            accessor: 'tipo',
-        },
-        {
-            Header: 'Valor',
-            accessor: 'valor',
-        },
-    ],[])
+    const InputTableForm = ({item, index}) => {
+        const [row, setRow] = useState(item)
 
-    const [tableData, setTableData] = useState(props.data)
+        const handleTipoInput = (e) => {
+            
+            if(e.target.value.length >= 2 && isValidTipo(e.target.value)){
+                setRow(old => {
+                    return {tipo: e.target.value, valor: old.valor}
+                })
+                return
+            }else if(e.target.value.length >= 2){
+                setRow(old => 
+                    item
+                )
+                alert("Valor Inválido!")
+                return
+            }
+            setRow(old => {
+                return {tipo: e.target.value, valor: old.valor}
+            })
 
-    useEffect(() => {
-        setTableData(old => props.data)
-    }, [props.data])
-    const tableInstance = useTable({columns, data: tableData, defaultColumn: {Cell: EditableCell}, updateData})
-    const {
-        headers,
-        getTableProps,
-        getTableBodyProps,
-        rows,
-        prepareRow,
-      } = tableInstance
-    
+        }
+        const handleValorInput = (e) => {
+            setRow(old => {
+                return {tipo: old.tipo, valor: e.target.value}
+            })
+        }
+        const update = () => {
+            if(row.valor && isValidTipo(row.tipo)){
+                updateEntrada(index, {tipo:row.tipo, valor: row.valor})
+            }else{
+                setRow(old => item)
+            }
+            
+        }
+        const getColor = () => {
+            if(index % 2 === 0){
+                return "#343434"
+            }
+            return "#545454"
+        }
+        return (
+        <tr key={index} style={{backgroundColor: getColor()}}>
+            <td>
+                <input type="text" 
+                name="tipo" 
+                id="tipo" 
+                value={row.tipo} 
+                onChange={(e) => {handleTipoInput(e)}} 
+                onBlur={(e) =>{
+                    update();
+                }}/>
+            </td>
+            <td>
+                <input type="number" name="valor" id="valor" 
+                value={row.valor} 
+                onChange={(e) => {handleValorInput(e)}}
+                onBlur={(e) => {update();}}
+                />
+            </td>
+            <td><button onClick={(e) => {removeEntrada(index)}}>Remover</button></td>
+        </tr>
+        )
+    }
     return (
-        <>
-            <table className='tabela'{...getTableProps()}>
+        <table className='inputs-table'>
             <thead>
                 <tr>
-                {headers.map((column => {
-                        return <th {...column.getHeaderProps()}>{column.render('Header')}</th>
-                    }))}
+                    <th>Tipo</th>
+                    <th>Valor</th>
                     <th>Opções</th>
                 </tr>
             </thead>
-            <tbody {...getTableBodyProps()}>
-                {rows.map((row) => {
-                    prepareRow(row)
-                    //console.log(row)
+            <tbody>
+                {entradas.length >= 0 && entradas.map((row, index) => {
                     return (
-                        <tr {...row.getRowProps()}>
-                            {row.cells.map((cell) => {
-                                
-                                return <td {...cell.getCellProps()}>{cell.render('Cell')}</td>
-                            })}
-                            <td key={row.index} className="opt-td"><button className='opt-btn' onClick={() => {remover(row.index)}}>ⓧ</button></td>
-                        </tr>
+                        <InputTableForm key={index} item={row} index={index} removeEntrada={removeEntrada} updateEntrada={updateEntrada}/>
                     )
                 })}
             </tbody>
         </table>
-        </>
     )
 }
 
-
 export default function Folha(){
+    const [entradas, setEntradas] = useState([])
 
-    const [data, setData] = useState([])
-    function remover(index){    
-
-        const result = data.filter((item, i) => {
-            return index !== i
+    const addEntrada = (valores) => {
+        setEntradas(old => {
+            return [...old,valores]
         })
-
-        setData(result)
     }
 
-    function updateData(valor, rowIndex, columnId){
-        setData(old => old.map((row, index) => {
-            if(index === rowIndex){
-                return {...old[rowIndex],[columnId]: parseFloat(valor)}
+    const getEntradaTotal = () => {
+        let res = {}
+        let resArr = []
+        entradas.forEach((curr) => {
+            if(res[curr.tipo]){
+                res[curr.tipo] = res[curr.tipo]+parseFloat(curr.valor);
+            }else{
+                res[curr.tipo] = parseFloat( curr.valor )
             }
-            return row
         })
-
-        )
+        
+        for(let item in res){
+            resArr.push({tipo: item, valor: res[item]})
+        }
+        return resArr;
     }
 
-    function addData({tipo, valor}){
-        // Adiciona um valor à tabela 
-        setData(old => {
-            return [...old, {tipo: tipo, valor: valor}]
-        })
-    }    
-
-    function getFolhaInfo(){
-        let total = {}
-        data.forEach((item) => {
-            !total[item.tipo] ? total[item.tipo] = item.valor : total[item.tipo] = total[item.tipo]+item.valor
-        })
-        console.log(total)
+    const removeEntrada = (index) => {
+        setEntradas(old => {return old.filter((curr, i) => { if(i === index){return false} return true})})
     }
 
+    const updateEntrada = (index, newValue) => {
+        setEntradas(old => {return old.map((curr, currIndex) => {
+            if(index === currIndex){
+                return newValue;
+            }
+            return curr;
+        })})
+    }
 
-    return (
-    <>
-
-        <div className="container-grid">
-            <div className="input-div">
-                <ValoresForm addData={addData} ></ValoresForm>
-                <InputTable
-                data={data}
-                remover={remover}
-                updateData={updateData}/>
-            </div>
-        </div>
-    </>)
+    return(
+        <>
+        {entradas && getEntradaTotal().map(curr => {
+            return <div>{curr.tipo} | {curr.valor}</div>
+        })}
+        <InputForm removeEntrada={removeEntrada} addEntrada={addEntrada} updateEntrada={updateEntrada}/>
+        <InputsTable entradas={entradas} removeEntrada={removeEntrada} updateEntrada={updateEntrada}/>
+        </>
+    )
 }
