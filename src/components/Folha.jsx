@@ -144,8 +144,41 @@ const InputsTable = ({entradas, removeEntrada, updateEntrada}) => {
     )
 }
 
+const TotalTable = ({entradas, getEntradaTotal}) => {
+
+    const [total, setTotal] = useState(getEntradaTotal(entradas));
+    useEffect(() => {
+        setTotal(getEntradaTotal(entradas))
+    },[entradas,getEntradaTotal])
+
+    const getFormattedValor = (valor) => {
+        valor = valor.toFixed(2);
+        return valor;
+    }
+
+    return(
+        <table className='inputs-table'>
+            <thead>
+                <tr>
+                    <th>Tipo:</th>
+                    <th>Valor Total:</th>
+                </tr>
+            </thead>
+            <tbody>
+                {total.length > 0 && total.map(curr => {
+                   return( <tr>
+                        <td>{curr.tipo}</td>
+                        <td>R$ {getFormattedValor(curr.valor)}</td>
+                    </tr>)
+                })}
+            </tbody>
+        </table>
+    )
+}
+
 export default function Folha(){
     const [entradas, setEntradas] = useState([])
+    
 
     const addEntrada = (valores) => {
         setEntradas(old => {
@@ -153,7 +186,7 @@ export default function Folha(){
         })
     }
 
-    const getEntradaTotal = () => {
+    const getEntradaTotal = (entradas) => {
         let res = {}
         let resArr = []
         entradas.forEach((curr) => {
@@ -183,13 +216,14 @@ export default function Folha(){
         })})
     }
 
+
+    
     return(
         <>
-        {entradas && getEntradaTotal().map(curr => {
-            return <div>{curr.tipo} | {curr.valor}</div>
-        })}
+
         <InputForm removeEntrada={removeEntrada} addEntrada={addEntrada} updateEntrada={updateEntrada}/>
         <InputsTable entradas={entradas} removeEntrada={removeEntrada} updateEntrada={updateEntrada}/>
+        <TotalTable entradas={entradas} getEntradaTotal={getEntradaTotal}/>
         </>
     )
 }
