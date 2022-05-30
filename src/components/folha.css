@@ -7,8 +7,8 @@
 
 
 .input-form{
-  padding: var(--margin01);
-  width: var(--form-width);
+  
+  width: 100%;
   background-color: black;
   border: gray 1px solid;
 }
@@ -16,10 +16,12 @@
   margin: var(--margin01);
 }
 
+.component{
+  width: 33%;
+}
 
 .inputs-table{
-  width: var(--form-width);
-  max-width: var(--form-width);
+  width: 100%;
   border-collapse: collapse;
   text-align: center;
 }
@@ -61,4 +63,22 @@
 .form-item {
   display: flex;
   flex-direction: column;
+}
+.form-item label{
+  font-size: small;
+  height: 1em;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.descontos-form{
+  border: 1px gray solid;
+  background-color: black;
+  padding: 0.2em;
+  width: 100%;
+  display: grid;
+  grid-template-columns: auto auto;
+}
+.descontos-form input{
+  width: 100%;
 }
