@@ -3,7 +3,7 @@ import NavBar from './components/NavBar';
 import Cnds from './components/Cnds';
 import Folha from './components/Folha';
 import {BrowserRouter as Router, Routes, Route} from 'react-router-dom'
-import Estadual from './components/Estadual';
+import Test from './components/Test';
 
 function App() {
   return (
@@ -14,7 +14,7 @@ function App() {
           <Routes> 
             <Route exact path='/folha' element={<Folha/>}/>
             <Route exact path='/' element={<Cnds/>}/>
-            <Route exact path='/teste' element={<Estadual/>}/>
+            <Route exact path='/teste' element={<Test/>}/>
           </Routes>
         </div>
       </Router>
