@@ -6,8 +6,34 @@
     justify-content: center;
     width: 100%;
 }
+
+
+@keyframes pop-in {
+    0% {
+        transform: translate(0, -15px);
+        opacity: 0;
+    }
+    100% {
+        transform: translate(0, 0);
+        opacity: 1;
+    }
+}
+@keyframes pop-out {
+    0% {
+        transform: translate(0, 0);
+        opacity: 1;
+    }
+    100% {
+        transform: translate(0, -15px);
+        opacity: 0;
+    }
+}
 .alert-item{
+    animation: pop-in 0.1s ease;
     height: 2rem;
     border-radius: .25rem;
     position: fixed;
+}
+.poping-out{
+    animation: pop-out 0.1s ease forwards;
 }

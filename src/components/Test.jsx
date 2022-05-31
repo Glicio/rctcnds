@@ -9,8 +9,7 @@ const AlertTest = () => {
 
 
   const addAlert = () => {
-      console.log(type);
-    setAlerts(old => [...old,{message: msg, type: type}])
+    setAlerts(old => [...old,{message: msg, type: type, id: (old.length && old.length > 0) ? old.length : 0}])
   }
 
   return (

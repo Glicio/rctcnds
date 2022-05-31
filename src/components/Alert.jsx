@@ -1,13 +1,30 @@
 import React, { useEffect, useState } from "react";
 import "./Alert.css";
 const AlertItem = ({ type, message, setAlerts, index, alertTime }) => {
-  const [alertStatus, setAlertStatus] = useState("");
-  useEffect(() => {}, []);
+  const [alertDisabling, setAlertDisabling] = useState(false);
+
+  alertTime = alertTime ? alertTime : 3000;
+
+  const removeSelf = () => {
+    
+    setAlertDisabling(true)
+
+    setTimeout(() => {
+      setAlerts(old => {
+        return old.filter((curr,i) => { return i !== index})
+      })
+    },200)
+  }
+  useEffect(() => {
+    setTimeout(() => {
+      //removeSelf();
+      console.log(index);
+    },alertTime)
+  }, []);
 
   const getStyle = (type) => {
     switch (type) {
       case "error":
-        console.log("ERROR");
         return { backgroundColor: "#c94040" };
       case "info":
         return { backgroundColor: "#4287f5" };
@@ -19,7 +36,7 @@ const AlertItem = ({ type, message, setAlerts, index, alertTime }) => {
   };
   return (
     <div
-      className="alert-item"
+      className={`alert-item ${ alertDisabling && "poping-out"}`}
       style={{ ...getStyle(type), top: `calc(${index}*2.1rem)` }}
     >
       {message}
@@ -37,6 +54,7 @@ export default function Alert({ alerts, setAlerts }) {
             message={curr.message}
             type={curr.type}
             alertTime={3000}
+            setAlerts={setAlerts}
           />
         );
       })}
